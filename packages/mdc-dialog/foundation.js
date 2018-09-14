@@ -44,6 +44,8 @@ class MDCDialogFoundation extends MDCFoundation {
       removeClass: (/* className: string */) => {},
       addBodyClass: (/* className: string */) => {},
       removeBodyClass: (/* className: string */) => {},
+      setAttribute: (/* name: string, value: string */) => {},
+      removeAttribute: (/* name: string */) => {},
       eventTargetHasClass: (/* target: !EventTarget, className: string */) => {},
       computeBoundingRect: () => {},
       trapFocus: () => {},
@@ -106,6 +108,8 @@ class MDCDialogFoundation extends MDCFoundation {
     this.adapter_.addClass(cssClasses.OPEN);
     this.adapter_.addBodyClass(cssClasses.SCROLL_LOCK);
 
+    this.adapter_.removeAttribute('aria-hidden');
+
     this.layout();
 
     clearTimeout(this.animationTimer_);
@@ -126,6 +130,8 @@ class MDCDialogFoundation extends MDCFoundation {
     this.adapter_.addClass(cssClasses.CLOSING);
     this.adapter_.removeClass(cssClasses.OPEN);
     this.adapter_.removeBodyClass(cssClasses.SCROLL_LOCK);
+
+    this.adapter_.setAttribute('aria-hidden', 'true');
 
     clearTimeout(this.animationTimer_);
     this.animationTimer_ = setTimeout(() => {

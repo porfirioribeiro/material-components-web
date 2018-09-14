@@ -53,6 +53,17 @@ class MDCDialogAdapter {
   removeBodyClass(className) {}
 
   /**
+   * @param {string} name
+   * @param {string} value
+   */
+  setAttribute(name, value) {}
+
+  /**
+   * @param {string} name
+   */
+  removeAttribute(name) {}
+
+  /**
    * @param {!EventTarget} target
    * @param {string} className
    * @return {boolean}

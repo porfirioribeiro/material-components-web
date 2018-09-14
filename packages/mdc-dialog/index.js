@@ -165,6 +165,8 @@ class MDCDialog extends MDCComponent {
       removeClass: (className) => this.root_.classList.remove(className),
       addBodyClass: (className) => document.body.classList.add(className),
       removeBodyClass: (className) => document.body.classList.remove(className),
+      setAttribute: (name, value) => this.root_.setAttribute(name, value),
+      removeAttribute: (name) => this.root_.removeAttribute(name),
       eventTargetHasClass: (target, className) => target.classList.contains(className),
       computeBoundingRect: () => this.root_.getBoundingClientRect(),
       trapFocus: () => this.focusTrap_.activate(),

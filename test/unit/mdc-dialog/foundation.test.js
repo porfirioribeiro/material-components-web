@@ -49,7 +49,7 @@ test('exports numbers', () => {
 test('default adapter returns a complete adapter implementation', () => {
   verifyDefaultAdapter(MDCDialogFoundation, [
     'addClass', 'removeClass', 'addBodyClass', 'removeBodyClass',
-    'eventTargetHasClass',
+    'setAttribute', 'removeAttribute', 'eventTargetHasClass',
     'computeBoundingRect', 'trapFocus', 'releaseFocus',
     'isContentScrollable', 'areButtonsStacked', 'getActionFromEvent',
     'notifyOpening', 'notifyOpened', 'notifyClosing', 'notifyClosed',
@@ -96,6 +96,14 @@ test('#open adds CSS classes', () => {
   td.verify(mockAdapter.addBodyClass(cssClasses.SCROLL_LOCK));
 });
 
+test('#open removes aria-hidden attribute', () => {
+  const {foundation, mockAdapter} = setupTest();
+
+  foundation.open();
+
+  td.verify(mockAdapter.removeAttribute('aria-hidden'));
+});
+
 test('#close removes CSS classes', () => {
   const {foundation, mockAdapter} = setupTest();
 
@@ -103,6 +111,14 @@ test('#close removes CSS classes', () => {
 
   td.verify(mockAdapter.removeClass(cssClasses.OPEN));
   td.verify(mockAdapter.removeBodyClass(cssClasses.SCROLL_LOCK));
+});
+
+test('#close adds aria-hidden attribute', () => {
+  const {foundation, mockAdapter} = setupTest();
+
+  foundation.close();
+
+  td.verify(mockAdapter.setAttribute('aria-hidden', 'true'));
 });
 
 test('#open adds the opening class to start an animation, and removes it after the animation is done', () => {

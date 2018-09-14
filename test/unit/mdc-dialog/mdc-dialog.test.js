@@ -244,6 +244,19 @@ test('adapter#removeClass removes a class from the root element', () => {
   assert.isNotOk(root.classList.contains('foo'));
 });
 
+test('adapter#setAttribute sets an attribute on the root element', () => {
+  const {root, component} = setupTest();
+  component.getDefaultFoundation().adapter_.setAttribute('aria-hidden', 'true');
+  assert.strictEqual(root.getAttribute('aria-hidden'), 'true');
+});
+
+test('adapter#removeAttribute removes an attribute from the root element', () => {
+  const {root, component} = setupTest();
+  root.setAttribute('aria-hidden', 'true');
+  component.getDefaultFoundation().adapter_.removeAttribute('aria-hidden');
+  assert.isFalse(root.hasAttribute('aria-hidden'));
+});
+
 test('adapter#addBodyClass adds a class to the body', () => {
   const {component} = setupTest();
   component.getDefaultFoundation().adapter_.addBodyClass('mdc-dialog--scroll-lock');

@@ -43,6 +43,7 @@ npm install @material/dialog
 <div class="mdc-dialog"
      role="alertdialog"
      aria-modal="true"
+     aria-hidden="true"
      aria-labelledby="my-dialog-title"
      aria-describedby="my-dialog-content">
   <div class="mdc-dialog__container">
@@ -96,6 +97,7 @@ The Simple Dialog contains a list of potential actions. It does not contain butt
 <div class="mdc-dialog"
      role="alertdialog"
      aria-modal="true"
+     aria-hidden="true"
      aria-labelledby="my-dialog-title"
      aria-describedby="my-dialog-content">
   <div class="mdc-dialog__container">
@@ -128,6 +130,7 @@ radio buttons (indicating single selection) or checkboxes (indicating multiple s
 <div class="mdc-dialog"
      role="alertdialog"
      aria-modal="true"
+     aria-hidden="true"
      aria-labelledby="my-dialog-title"
      aria-describedby="my-dialog-content">
   <div class="mdc-dialog__container">
@@ -271,6 +274,8 @@ Method Signature | Description
 `removeClass(className: string) => void` | Removes a class from the root element.
 `addBodyClass(className: string) => void` | Adds a class to the `<body>`.
 `removeBodyClass(className: string) => void` | Removes a class from the `<body>`.
+`setAttribute(name: string, value: string) => void` | Sets an attribute on the root element.
+`removeAttribute(name: string) => void` | Removes an attribute from the root element.
 `eventTargetHasClass(target: !EventTarget, className: string) => void` | Returns `true` if the target element has the given CSS class, otherwise `false`.
 `computeBoundingRect()`: Forces the component to recalculate its layout; in the vanilla DOM implementation, this calls `computeBoundingClientRect`.
 `trapFocus() => void` | Sets up the DOM such that keyboard navigation is restricted to focusable elements within the dialog surface (see [Handling Focus Trapping](#handling-focus-trapping) below for more details).
